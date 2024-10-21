@@ -10,6 +10,7 @@ export const globalVariables = {
     darkColor: '#02071f',
     greenColor: 'green',
     redColor: 'red',
+    yellowColor: 'yellow',
     accentFontFamily: 'Orbitron Bold',
 }
 

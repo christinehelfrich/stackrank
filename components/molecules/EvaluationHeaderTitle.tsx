@@ -13,7 +13,7 @@ const EvaluationHeaderTitle = ({name, score}: any) => {
           <Text style={globalStyles.h3}>
             {name}
           </Text>
-          <ScoreIcon score={score === 0 ? '-' : score} textBeneath={'OVERALL'} width={25}></ScoreIcon>
+          <ScoreIcon score={score === 0 ? '-' : score} textBeneath={'OVERALL'} width={30}></ScoreIcon>
     </View>
   )
 }

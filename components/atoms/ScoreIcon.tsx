@@ -11,7 +11,7 @@ const ScoreIcon = ({ score, textBeneath, width }: any) => {
   return (
     <View style={styles.container}>
       <View style={styles.hollowCircle}>
-        <View style={[styles.threeQuarterCircle, score === '-' && styles.dash, score === '5' && styles.five, score === '4' && styles.four, score === '3' && styles.three, score === '2' && styles.two, score === '1' && styles.one]}>
+        <View style={[styles.threeQuarterCircle, score === '-' && styles.dash, parseInt(score) >= 4 && styles.five, (parseInt(score) < 4 && parseInt(score) > 2) && styles.middle, (parseInt(score) <= 2) && styles.one]}>
           <Text style={styles.ratingNumber}>{score}</Text>
         </View>
       </View>
@@ -37,23 +37,19 @@ export const styling = (width: number, colors: any) => StyleSheet.create({
   },
   threeQuarterCircle: {
     width: width,
-    height: width,
+    height: width - 5,
     borderRadius: 25,
     borderWidth: 3,
-    // borderColor: globalVariables.tertiaryColor,
-    // borderTopColor: globalVariables.tertiaryColor,   // Top part of the border
-    // borderRightColor: globalVariables.tertiaryColor, // Right part of the border
     borderBottomColor: 'transparent', // Bottom transparent to simulate cutout
-    // borderLeftColor: globalVariables.tertiaryColor,  // Left part of the border
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
   },
   dash: {
-    borderColor: globalVariables.tertiaryColor,
-    borderTopColor: globalVariables.tertiaryColor, // Top part of the border
-    borderRightColor: globalVariables.tertiaryColor,// Right part of the border
-    borderLeftColor: globalVariables.tertiaryColor,// Left part of the border
+    borderColor: globalVariables.neutralColor,
+    borderTopColor: globalVariables.neutralColor, // Top part of the border
+    borderRightColor: globalVariables.neutralColor,// Right part of the border
+    borderLeftColor: globalVariables.neutralColor,// Left part of the border
   },
   five: {
     borderColor: globalVariables.greenColor,
@@ -61,33 +57,21 @@ export const styling = (width: number, colors: any) => StyleSheet.create({
     borderRightColor: globalVariables.greenColor,// Right part of the border
     borderLeftColor: globalVariables.greenColor,// Left part of the border
   },
-  four: {
-    borderColor: globalVariables.tertiaryColor,
-    borderTopColor: globalVariables.tertiaryColor, // Top part of the border
-    borderRightColor: globalVariables.tertiaryColor,// Right part of the border
-    borderLeftColor: globalVariables.tertiaryColor,// Left part of the border
-  },
-  three: {
-    borderColor: globalVariables.tertiaryColor,
-    borderTopColor: globalVariables.tertiaryColor, // Top part of the border
-    borderRightColor: globalVariables.tertiaryColor,// Right part of the border
-    borderLeftColor: globalVariables.tertiaryColor,// Left part of the border
-  },
-  two: {
-    borderColor: globalVariables.tertiaryColor,
-    borderTopColor: globalVariables.tertiaryColor, // Top part of the border
-    borderRightColor: globalVariables.tertiaryColor,// Right part of the border
-    borderLeftColor: globalVariables.tertiaryColor,// Left part of the border
+  middle: {
+    borderColor: globalVariables.yellowColor,
+    borderTopColor: globalVariables.yellowColor, // Top part of the border
+    borderRightColor: globalVariables.neutralColor,// Right part of the border
+    borderLeftColor: globalVariables.yellowColor,// Left part of the border
   },
   one: {
     borderColor: globalVariables.redColor,
-    borderTopColor: globalVariables.redColor, // Top part of the border
-    borderRightColor: globalVariables.redColor,// Right part of the border
+    borderTopColor: globalVariables.neutralColor, // Top part of the border
+    borderRightColor: globalVariables.neutralColor,// Right part of the border
     borderLeftColor: globalVariables.redColor,// Left part of the border
   },
   ratingNumber: {
     fontFamily: globalVariables.accentFontFamily,
-    fontSize: width / 2,
+    fontSize: width / 2.5,
     fontWeight: 'bold',
     color: colors.scoreIconTextColor,
     zIndex: 1,
