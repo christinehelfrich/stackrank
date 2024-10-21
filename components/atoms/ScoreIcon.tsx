@@ -86,6 +86,7 @@ export const styling = (width: number, colors: any) => StyleSheet.create({
     borderLeftColor: globalVariables.redColor,// Left part of the border
   },
   ratingNumber: {
+    fontFamily: globalVariables.accentFontFamily,
     fontSize: width / 2,
     fontWeight: 'bold',
     color: colors.scoreIconTextColor,

@@ -36,9 +36,3 @@ export const getAllEvaluations = () => {
             return({msg: 'an error occurred', error: err})
         })
 }
-
-
-// UPDATES
-// differentiate between unanswered and answered questions
-// metered coloring
-// 'overall' score per category ??

@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import { Modal, Pressable, Text, View, StyleSheet } from 'react-native'
 import { useTheme } from '@react-navigation/native'
-import {globalStyle} from '../../styles/styles'
+import {globalStyle, globalVariables} from '../../styles/styles'
 
 const EvaluationScoring = ({criteria, score, onScoreChangedEvent}: any) => {
     const { colors } = useTheme();
@@ -50,6 +50,7 @@ const createStyles = (colors: any) => StyleSheet.create({
       fontSize: 15,
       fontWeight: 500,
       color: colors.text, // Black text color
+      fontFamily: globalVariables.accentFontFamily
     },
     buttonsContainer: {
       display: 'flex',

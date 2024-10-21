@@ -22,7 +22,7 @@ const EventBox = ({ onClickEvaluationButton, evalData}: any) => {
             <Text style={globalStyles.p}>{formatDateToLongDateWithTime(new Date(evalData?.EventDate))}</Text>
             {/* <Text style={globalStyles.p}>{evalData?.location}</Text> */}
             <Pressable style={styles.button} onPress={(event) => onClickEvaluationButtonEvent(event)}>
-              <Text style={styles.buttonText}>Begin Evaluation</Text>
+              <Text style={[styles.buttonText, globalStyles.primaryButtonText]}>Begin Evaluation</Text>
             </Pressable>
         </View>
     </View>
@@ -58,10 +58,10 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     buttonText: {
-        fontSize: 12,
-        fontWeight: 'bold',
+        // fontSize: 12,
+        // fontWeight: 'bold',
         letterSpacing: 0.25,
-        color: 'white',
+        // color: 'white',
     }
 
 })

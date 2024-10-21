@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+// @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 
 export const globalVariables = {
     primaryColor: '#314CB6',
@@ -9,6 +10,7 @@ export const globalVariables = {
     darkColor: '#02071f',
     greenColor: 'green',
     redColor: 'red',
+    accentFontFamily: 'Orbitron Bold',
 }
 
 export const globalStyle = (colors) => {
@@ -17,11 +19,13 @@ export const globalStyle = (colors) => {
       backgroundColor: colors.background
     },
     h1: {
+      fontFamily: globalVariables.accentFontFamily,
       fontSize: 40,
       textAlign: 'center',
       color: colors.text
     },
     h2: {
+      fontFamily: globalVariables.accentFontFamily,
       fontWeight: 'bold',
       color: 'black',
       textTransform: 'uppercase',
@@ -58,6 +62,7 @@ export const globalStyle = (colors) => {
       marginVertical: 5
     },
     primaryButtonText: {
+      fontFamily: globalVariables.accentFontFamily,
       color: 'white',
       fontWeight: 'bold',
       textAlign: 'center',

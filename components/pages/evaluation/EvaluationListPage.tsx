@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, Pressable, ScrollView } from 'react-native'
 import { globalStyle } from '../../../styles/styles'
 import { getAllPlayersInEvaluation } from '../../../services/evaluations/evaluationsService'
 import { useTheme } from '@react-navigation/native'
+import { globalVariables } from '../../../styles/styles'
 
 const EvaluationListPage = ({navigation}: any) => {
   const { colors } = useTheme();
@@ -81,6 +82,7 @@ const createStyles = (colors: any) => StyleSheet.create({
     numberText: {
       fontSize: 16,
       fontWeight: 400,
+      fontFamily: globalVariables.accentFontFamily,
       color: colors.text
     },
     playerName: {

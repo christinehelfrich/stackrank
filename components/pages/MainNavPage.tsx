@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import HomePage from './HomePage';
 import {NavigationContainer, DefaultTheme, DarkTheme,} from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import {useColorScheme} from 'react-native';
+import {Text} from 'react-native';
 import ProfilePage from './ProfilePage';
 import { useSelector } from 'react-redux';
 import LogInPage from './auth/LogInPage';
 import SignInPage from './auth/SignUpPage';
 import { EventsBasePage } from './EventsPage';
 import { lightTheme, darkTheme } from '../../styles/themes'
+import { useFonts } from "expo-font";
 
 const Drawer = createDrawerNavigator();
 
@@ -17,6 +18,10 @@ const MainNavPage = () => {
   const [isAuth, setIsAuth] = useState<boolean>(user != null)
   const scheme = 'dark'// useColorScheme(); // 'light' or 'dark'
   const theme = scheme === 'dark' ? darkTheme : lightTheme;
+  const [fontsLoaded] = useFonts({
+    "Orbitron Medium": require("../../assets/fonts/Orbitron Medium.ttf"),
+    "Orbitron Bold": require("../../assets/fonts/Orbitron Bold.ttf"),
+  });
 
   const onLogin = () => {
     setIsAuth(true)
@@ -28,6 +33,8 @@ const MainNavPage = () => {
 
   return (
     <NavigationContainer independent={true} theme={theme}>
+      {fontsLoaded && (
+      <>
 
     {!isAuth && ( 
       <>
@@ -53,6 +60,12 @@ const MainNavPage = () => {
       />
     </Drawer.Navigator>
     )}
+    </>)}
+    {!fontsLoaded && (
+      <>
+          <Text>font loading...</Text>
+          </>
+        )}
 
     </NavigationContainer>
   )

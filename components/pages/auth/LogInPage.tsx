@@ -31,7 +31,7 @@ const LogInPage = ({onLoginEvent}: any) => {
 
   return (
     <View style={[styles.container, globalStyles.container]}>
-      <View style={styles.textBox}>
+            <View style={styles.textBox}>
         <Text style={globalStyles.h1}>TIDEPOOL SPORTS</Text>
         <Text style={globalStyles.subheader}>Team evaluation and draft platform</Text>
       </View>

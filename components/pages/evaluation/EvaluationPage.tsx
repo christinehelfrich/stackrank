@@ -6,6 +6,7 @@ import EvaluationCriteriaItem from '../../molecules/EvaluationCriteriaItem';
 import { globalStyle, globalVariables } from '../../../styles/styles';
 import { useTheme } from '@react-navigation/native';
 import { getAverageValue } from '~/utils/formatting/averageValue';
+import CollapsableBanner from '~/components/molecules/CollapsableBanner';
 
 const EvaluationPage = ({ route, navigation, onAverageScoreChange }: any) => {
     const { colors } = useTheme();
@@ -61,14 +62,16 @@ const EvaluationPage = ({ route, navigation, onAverageScoreChange }: any) => {
     <ScrollView>
         {evaluationCriteria?.map((criteria: any, index: number) => (
             <View key={index}>
-                <View style={styles.banner}>
+                {/* <View style={styles.banner}>
                     <Text style={globalStyles.h2}>{criteria.Name}</Text>
-                </View>
-                <View style={styles.container}>
-                   {criteria.EvaluationCategories.map((item: any, index: number) => (
-                    <EvaluationCriteriaItem key={index} criteria={item} onScoreChangedEvent={onScoreChanged}></EvaluationCriteriaItem>
-                   ))}
-                </View>
+                </View> */}
+                <CollapsableBanner label={criteria.Name} isOpenByDefault={index === 0}>
+                    <View style={styles.container}>
+                       {criteria.EvaluationCategories.map((item: any, index: number) => (
+                        <EvaluationCriteriaItem key={index} criteria={item} onScoreChangedEvent={onScoreChanged}></EvaluationCriteriaItem>
+                       ))}
+                    </View>
+                </CollapsableBanner>
             </View>
         ))}
     </ScrollView>
@@ -81,15 +84,6 @@ const createStyles = (colors: any) => StyleSheet.create({
     container: {
       margin: 15,
     },
-    banner: {
-        backgroundColor: colors.bannerBackgroundColor,
-        padding: 5
-    },
-    bannerText: {
-        fontWeight: 'bold',
-        fontSize: 12,
-        textTransform: 'uppercase'
-    }
   });
 
 export default EvaluationPage
