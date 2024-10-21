@@ -5,27 +5,29 @@ import ScoreIcon from '../atoms/ScoreIcon'
 import { useTheme } from '@react-navigation/native'
 import EvaluationScoring from './EvaluationScoring'
 import ModalComponent from '../atoms/ModalComponent'
+import { formatScoreToPercent } from '~/utils/formatting/formatScoreToPercent'
 
 const EvaluationCriteriaItem = ({criteria, onScoreChangedEvent}: any) => {
   const { colors } = useTheme();
   const globalStyles: any = useMemo(() => globalStyle(colors), [colors]);
   const styles: any = useMemo(() => createStyles(colors), [colors]);
-  const [score, setScore] = useState(0)
+  const [score, setScore] = useState<any>(0)
   const [modalVisible, setModalVisible] = useState(false);
 
   const onScoreChanged = (scoreSelected: number) => {
-    setScore(scoreSelected)
-    onScoreChangedEvent({'scoreSelected': scoreSelected, criteriaId: criteria.Id})
+    if(typeof scoreSelected === 'number') {
+      setScore(scoreSelected)
+      onScoreChangedEvent({'scoreSelected': formatScoreToPercent(criteria.ScoreMax, scoreSelected), criteriaId: criteria.Id})
+    }
+
     // set in db
   }
 
   const onOpenModal = () => {
-    console.log('onpress', modalVisible)
     setModalVisible(!modalVisible)
   }
 
   const onCloseModal = () => {
-    console.log('close')
     setModalVisible(false)
   }
   
@@ -34,10 +36,10 @@ const EvaluationCriteriaItem = ({criteria, onScoreChangedEvent}: any) => {
         <Pressable style={styles.titleBox} onPress={onOpenModal}>
           <Text style={globalStyles.p}>{criteria.Name}
           </Text>
-          <ScoreIcon score={score === 0 ? '-' : score.toString()} textBeneath={''} width={30}></ScoreIcon>
+          <ScoreIcon score={score === 0 ? '-' : score.toString()} textBeneath={''} width={30} maxScore={criteria.ScoreMax}></ScoreIcon>
         </Pressable>
         <ModalComponent openButton={false} isVisible={modalVisible} onClose={onCloseModal}>
-          <EvaluationScoring criteria={criteria} score={score} onScoreChangedEvent={onScoreChanged}></EvaluationScoring>
+            <EvaluationScoring criteria={criteria} score={score} onScoreChangedEvent={onScoreChanged}></EvaluationScoring>
         </ModalComponent>
     </View>
   )

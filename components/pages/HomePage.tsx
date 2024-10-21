@@ -7,11 +7,9 @@ import { useSelector } from 'react-redux';
 
 const HomePage = ({navigation}: any) => {
   const user = useSelector<any>(state => state.user.user);
-  console.log('user', user)
   const [isAuth, setIsAuth] = useState<boolean>(user != null)
 
   const onLogin = () => {
-    console.log('on login !!!')
     setIsAuth(true)
   }
 

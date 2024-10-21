@@ -23,7 +23,6 @@ const LogInPage = ({onLoginEvent}: any) => {
     const dispatch = useDispatch();
 
     const onLogin = () => {
-      console.log('on login')
       dispatch(updateUser({name: name, password: password}))
       onLoginEvent()
     }

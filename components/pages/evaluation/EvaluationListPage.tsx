@@ -14,7 +14,6 @@ const EvaluationListPage = ({navigation}: any) => {
     const [error, setError] = useState('')
 
     useEffect(() => {
-      console.log('here')
       setisLoading(true)
       getAllPlayersInEvaluation()
           .then((res) => {
@@ -27,7 +26,6 @@ const EvaluationListPage = ({navigation}: any) => {
             // }
           })
           .catch((err) => {
-              console.log(err)
               setError('there was an error...')
               setisLoading(false)
           })

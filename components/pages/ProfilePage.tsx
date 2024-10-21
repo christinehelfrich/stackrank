@@ -18,7 +18,6 @@ const ProfilePage = ({onLogoutEvent}: any) => {
   }
 
   const onLogout = () => {
-    console.log('logout')
     onLogoutEvent()
   }
 

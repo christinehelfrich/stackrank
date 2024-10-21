@@ -7,7 +7,7 @@ export const getAverageValue = (data: { [key: string]: number }): number => {
     const count = values.length;
     
     // Calculate the average and round to one decimal place
-    const average = Math.round((totalSum / count) * 10) / 10;
+    const average = Math.round(totalSum / count);
     
     return average;
 }

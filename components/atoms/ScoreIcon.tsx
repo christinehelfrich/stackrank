@@ -3,15 +3,14 @@ import { View, Text, StyleSheet } from 'react-native';
 import { globalVariables } from '../../styles/styles';
 import { useTheme } from '@react-navigation/native';
 
-const ScoreIcon = ({ score, textBeneath, width }: any) => {
+const ScoreIcon = ({ score, textBeneath, width, maxScore = 100 }: any) => {
   const { colors } = useTheme();
-  console.log(score)
   const styles: any = useMemo(() => styling(width, colors), [colors]);
 
   return (
     <View style={styles.container}>
       <View style={styles.hollowCircle}>
-        <View style={[styles.threeQuarterCircle, score === '-' && styles.dash, parseInt(score) >= 4 && styles.five, (parseInt(score) < 4 && parseInt(score) > 2) && styles.middle, (parseInt(score) <= 2) && styles.one]}>
+        <View style={[styles.threeQuarterCircle, score === '-' && styles.dash, parseInt(score) >= ((maxScore / 3) * 2) && styles.five, (parseInt(score) < ((maxScore / 3) * 2) && parseInt(score) > (maxScore / 3)) && styles.middle, (parseInt(score) <= (maxScore / 3)) && styles.one]}>
           <Text style={styles.ratingNumber}>{score}</Text>
         </View>
       </View>

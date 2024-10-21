@@ -16,7 +16,6 @@ export const EventsBasePage = (props: { navigation: any}) => {
   const { colors } = useTheme();
   const [avgScore, setAverageScore] = useState('-')
   const onAverageScoreChange = (ev: any) => {
-    console.log('ev', ev)
     setAverageScore(ev.toString())
   }
 
@@ -75,7 +74,6 @@ export const EventsPage = (props: { navigation: any}) => {
     setisLoading(true)
     getAllEvaluations()
       .then((res: any) => {
-        console.log('res', res)
         if(res.error) {
           setError('there was an error: ' + res.error)
           setisLoading(false)
